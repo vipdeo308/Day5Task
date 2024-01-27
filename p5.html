@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Question 1
+        
+        var mixArr = [1,2,"four",3,2,4,"five",3,5,"seven",6,7]
+        
+        var arr1 = [1, 3, 5, 7];
+        var arr2 = [2, 4, 6, 8, 9];
+
+        var numArr = [10,9,8,7,6,5,4,3,2,1];    
+        
+        var strArr = ["Apple PIE","Mango shake","grape juice","japanese","arabic","malayalam","noon","radar","deed"];    
+
+        var displayOdd = function (arr) {
+            var list = [] 
+            for(value of arr)
+            {
+               if(value%2!=0)
+                    list.push(value)     
+            }
+            console.log("Odd Numbers in original Array: ",list)
+        }; 
+        displayOdd(numArr);
+
+        var titleCase = function (arr) { 
+            var list = []
+
+            for(str of arr)
+            {
+                str = str.toLowerCase().split(' ')
+                for (let i = 0; i < str.length; i++) 
+                    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1)
+
+                list.push(str.join(' '))
+            }
+
+            console.log("String Array in Title Case: ",list)
+        }; 
+        titleCase(strArr);
+
+        var findSum = function (arr) { 
+            var sum = 0.0
+            
+            for(index in arr)
+                sum += arr[index]
+
+            console.log("Array of Numbers: ",arr,"\n","Sum of Array: ",sum.toFixed(2))
+        }
+        findSum(numArr)
+
+        var findPrime = function (arr) { 
+            var list = []
+
+            for(var value of arr)
+            {
+                var flag = true
+                for(let i=2;i<value;i++)
+                {
+                    if(value%i==0)
+                        flag = false
+                }
+
+                if(flag && value>=2)
+                    list.push(value)
+            }
+
+            console.log("Prime Numbers: ",list)
+        }
+        findPrime(numArr)
+
+        var findPal = function (arr) {
+            var list = []
+
+            for(var value of arr)
+            {
+                var data = value.split('')
+
+                var n = data.length    
+                
+                var flag = true
+                
+                for(let i=0;i<(n/2);i++)
+                {
+                    if(data[i]!=data[n-i-1])
+                    {
+                        flag=false
+                    }
+                }
+                
+                if(flag)
+                    list.push(value)
+            }
+
+            console.log("Palindrome Strings: ",list)
+        }
+        findPal(strArr)
+
+        var median = function(arr1, arr2) {
+            var n1 = arr1.length
+            var n2 = arr2.length
+
+            var arr3 = []
+
+            var i = 0, j = 0, k = 0;
+       
+            // traverse the arr1 and insert its element in arr3
+            while (i < n1) 
+            {
+                arr3[k++] = arr1[i++];
+            }
+ 
+            // now traverse arr2 and insert in arr3
+            while (j < n2) 
+            {
+                arr3[k++] = arr2[j++];
+            }
+ 
+            // sort the whole array arr3
+            arr3.sort();
+
+            var n = arr3.length;
+            var med = 0.0
+
+            // find the median
+            if(n%2==0)
+                med = (arr3[n/2]+arr3[(n/2)-1])/2
+            else
+                med = arr3[(n-1)/2]
+
+            console.log("Merged Array: ",arr3,"\n","Median = ",med.toFixed(2))    
+        }
+        median(arr1,arr2)
+
+        var remDup = function (arr) { 
+            for(let i=0;i<arr.length;i++)
+            {
+                for(let j=0;j<i;j++)
+                {
+                    if(arr[i]==arr[j])
+                        delete arr[i]
+                }
+            }
+            console.log("Unique Array: ",arr.flat())
+        }; 
+        remDup(mixArr);
+
+        var rotate = function (arr,k) {
+            for(let i=0;i<k;i++)
+            {
+                beg = arr[0]
+                for(let j=0;j<(arr.length-1);j++)
+                arr[j] = arr[j+1]
+
+                arr[arr.length-1] = beg
+            }
+            console.log("Array after ",k," Rotations: ",arr.flat())
+        };
+        rotate(numArr,5) 
+    </script>
+</body>
+</html>

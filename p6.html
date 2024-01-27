@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Question 2
+
+        var numArr = [10,9,8,7,6,5,4,3,2,1];    
+        
+        var strArr = ["Apple PIE","Mango shake","grape juice","japanese","arabic","malayalam","noon","radar","deed"];   
+
+        ( () => {
+            var list = [] 
+            for(value of numArr)
+            {
+               if(value%2!=0)
+                    list.push(value)     
+            }
+            console.log("Odd Numbers in original Array: ",list)
+        } )();
+
+        ( () => {
+            var list = []
+
+            for(str of strArr)
+            {
+                str = str.toLowerCase().split(' ')
+                for (let i = 0; i < str.length; i++) 
+                    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1)
+
+                list.push(str.join(' '))
+            }
+            
+            console.log("String Array in Title Case: ",list)
+        } )();
+
+        ( () => {
+            var sum = 0.0
+            
+            for(index in numArr)
+                sum += numArr[index]
+
+            console.log("Array of Numbers: ",numArr,"\n","Sum of Array: ",sum.toFixed(2))
+        } )();
+
+        ( () => {
+            var list = []
+
+            for(var value of numArr)
+            {
+                var flag = true
+                for(let i=2;i<value;i++)
+                {
+                    if(value%i==0)
+                        flag = false
+                }
+
+                if(flag && value>=2)
+                    list.push(value)
+            }
+
+            console.log("Prime Numbers: ",list)
+        } )();
+
+        ( () => {
+            var list = []
+
+            for(var value of strArr)
+            {
+                var data = value.split('')
+
+                var n = data.length    
+                
+                var flag = true
+                
+                for(let i=0;i<(n/2);i++)
+                {
+                    if(data[i]!=data[n-i-1])
+                    {
+                        flag=false
+                    }
+                }
+                
+                if(flag)
+                    list.push(value)
+            }
+
+            console.log("Palindrome Strings: ",list)
+        } )();
+    </script>
+</body>
+</html>
